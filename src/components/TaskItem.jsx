@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, deleteTask }) => {
    //by default, the task should not be checked:
    const [isChecked, setIsChecked] = useState(task.checked);
 
@@ -36,7 +36,7 @@ const TaskItem = ({ task }) => {
             <button
                className="btn"
                aria-label={`Update ${task.name} Task`}
-               // onCLick={}
+               //onClick={}
             >
                <PencilSquareIcon width={24} height={24} />
             </button>
@@ -44,7 +44,8 @@ const TaskItem = ({ task }) => {
                className={`btn ${styles.delete}`}
                //btn is from global css and the next one is from the module
                aria-label={`Delete ${task.name} Task`}
-               // onCLick={}
+               onClick={() => deleteTask(task.id)}
+               //if () is omitted, it will delete immediately
             >
                <TrashIcon width={24} height={24} />
             </button>
