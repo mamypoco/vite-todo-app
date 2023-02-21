@@ -6,12 +6,13 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
-const TaskItem = ({ task, deleteTask }) => {
+const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
    //by default, the task should not be checked:
    const [isChecked, setIsChecked] = useState(task.checked);
 
    const handleCheckboxChange = (e) => {
       setIsChecked(!isChecked);
+      toggleTask(task.id);
    };
 
    return (
@@ -36,7 +37,7 @@ const TaskItem = ({ task, deleteTask }) => {
             <button
                className="btn"
                aria-label={`Update ${task.name} Task`}
-               //onClick={}
+               onClick={() => enterEditMode(task)}
             >
                <PencilSquareIcon width={24} height={24} />
             </button>
